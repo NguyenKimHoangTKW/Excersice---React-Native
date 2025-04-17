@@ -6,7 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { NavigationContainer } from "@react-navigation/native";
 import Create_New_Password from "./CreateNewAccount";
 import { useNavigation } from '@react-navigation/native';
-const Login = () =>{
+const ResetPassword = () =>{
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showAlert, setShowAlert] = useState(false);
@@ -30,36 +30,21 @@ const Login = () =>{
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar></StatusBar>         
-            <Image style={styles.imageContainer}
-                source={require("../assets/images/logo-vertical.png")}
-            />
            <View style={styles.form}>
-                
+                <Text style={styles.title_check}>Reset your password</Text>
            <TextInput
-                label="Email"
+                label="Enter Email"
                 placeholder="Enter email"
                 value={username}
                 onChangeText={setUsername}
                 style={styles.ip}
-                left={<TextInput.Icon icon="email" />}
-/>
-                <TextInput
-                label="Password"
-                placeholder="Enter password"
-                style={styles.ip}
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry={true}
-                left={<TextInput.Icon icon={"key"}/>}
-                right={<TextInput.Icon icon={"eye"}/>}
-                ></TextInput>
+                left={<TextInput.Icon icon="email" />}/>
                 <TouchableOpacity style={styles.btn} onPress={CheckLogin}>
-                    <Text style={{color:'#ffffff',fontWeight:'bold'}}>Login</Text>
+                    <Text style={{color:'#ffffff',fontWeight:'bold'}}>Signup</Text>
                 </TouchableOpacity>
            </View>
            <View style={styles.form_option_password} >
-                <Text style={{color: '#0066ff'}}>Create a new account</Text>
-                <Text style={{color: '#0066ff',marginTop:15}}>Forget Password</Text>
+                <Text style={{color: '#0066ff',marginTop:15}}>Go back to Login</Text>
            </View>
            <AwesomeAlert
                 show={showAlert}
@@ -83,10 +68,10 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:'#ffffff',
-        paddingHorizontal:30
+        paddingHorizontal:30,
     },
     title:{
-        marginTop:30,
+        marginTop:25,
         alignItems:'center'
     },
     form:{
@@ -108,14 +93,18 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: 10,
         width:350,
         height:250
     },
     form_option_password:{
         alignItems:'center',
-        marginTop:20,
+        marginTop:5,
         
+    },
+    title_check:{
+        fontSize:30,
+        fontWeight:'bold',
     }
 })
-export default Login;
+export default ResetPassword;
