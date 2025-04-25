@@ -7,19 +7,15 @@ import { PaperProvider } from 'react-native-paper';
 import { enableScreens } from 'react-native-screens';
 import ResetPassword from './components/ResetPassword';
 import HomeUser from './components/user';
+import Calculator from './components/Calculator';
 
 enableScreens();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Home" component={HomeUser} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Create New Account" component={Create_New_Account} />
-        <Stack.Screen name="Reset Password" component={ResetPassword} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <Calculator></Calculator>
+    </>
   );
 }
