@@ -123,3 +123,4 @@ project.ext.vectoricons = [
     iconFontNames: [ 'MaterialCommunityIcons.ttf', 'MaterialIcons.ttf', 'EvilIcons.ttf' ] // thêm những font bạn cần
 ]
 
+
