@@ -3,7 +3,8 @@ import { Alert, Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpaci
 import { TextInput } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native';
 import { BASE_URL } from "../apiConfig";
-export default function Create_New_Account() {
+
+const CreateNewAccount = () => {
     const navigation = useNavigation();
     const [showPassword,setShowPassword] = useState(false);
     const [showCheckPassword,setShowCheckPassword] = useState(false);
@@ -49,99 +50,123 @@ export default function Create_New_Account() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar></StatusBar>         
-
-           <View style={styles.form}>
-                <Text style={styles.title_check}>Create a new account!</Text>
-           <TextInput
-                label="Email"
-                placeholder="Enter email"
-                value={email}
-                onChangeText={setUsername}
-                style={styles.ip}
-                left={<TextInput.Icon icon="email" />}/>
-            <TextInput
-                label="Enter password"
-                placeholder="Enter password"
-                style={styles.ip}
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry={!showPassword}
-                left={<TextInput.Icon icon={"key"}/>}
-                right={<TextInput.Icon 
-                    icon={showPassword ? "eye" :"eye-off"}
-                    onPress={() => setShowPassword(!showPassword)}
-                    />
-                }/>
-            <TextInput
-                label="Enter password again"
-                placeholder="Enter password again"
-                style={styles.ip}
-                value={Check_password}
-                onChangeText={setCheckPassword}
-                secureTextEntry={!showCheckPassword}
-                left={<TextInput.Icon icon={"key"}/>}
-                right={<TextInput.Icon 
-                    icon={showCheckPassword ? "eye" :"eye-off"}
-                    onPress={() => setShowCheckPassword(!showCheckPassword)}
-                    />
-                }/>    
+            <StatusBar />
+            <View style={styles.formBox}>
+                <Text style={styles.title_check}>Create Account</Text>
+                <Text style={styles.subtitle}>Join us and start your journey!</Text>
+                <TextInput
+                    label="Email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChangeText={setUsername}
+                    style={styles.ip}
+                    left={<TextInput.Icon icon="email" />}
+                />
+                <TextInput
+                    label="Password"
+                    placeholder="Enter password"
+                    style={styles.ip}
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={!showPassword}
+                    left={<TextInput.Icon icon={"key"}/>}
+                    right={<TextInput.Icon 
+                        icon={showPassword ? "eye-off" :"eye"}
+                        onPress={() => setShowPassword(!showPassword)}
+                    />}
+                />
+                <TextInput
+                    label="Confirm Password"
+                    placeholder="Enter password again"
+                    style={styles.ip}
+                    value={Check_password}
+                    onChangeText={setCheckPassword}
+                    secureTextEntry={!showCheckPassword}
+                    left={<TextInput.Icon icon={"key"}/>}
+                    right={<TextInput.Icon 
+                        icon={showCheckPassword ? "eye-off" :"eye"}
+                        onPress={() => setShowCheckPassword(!showCheckPassword)}
+                    />}
+                />    
                 <TouchableOpacity style={styles.btn} onPress={Create_New}>
-                    <Text style={{color:'#ffffff',fontWeight:'bold'}}>Signup</Text>
+                    <Text style={styles.btnText}>Create Account</Text>
                 </TouchableOpacity>
-           </View>
-           <View style={styles.form_option_password} > 
+            </View>
+            <View style={styles.form_option_password}>
                 <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                    <Text style={{color: '#0066ff',marginTop:15}}>Already has been Account!</Text>
+                    <Text style={styles.linkText}>Already have an account? Sign in</Text>
                 </TouchableOpacity>
-           </View>
+            </View>
         </SafeAreaView>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        backgroundColor:'#ffffff',
-        paddingHorizontal:30,
-        paddingTop: 150
+    container: {
+        flex: 1,
+        backgroundColor: '#f6f8fa',
+        paddingHorizontal: 0,
+        justifyContent: 'center',
     },
-    title:{
-        marginTop:25,
-        alignItems:'center'
+    formBox: {
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        padding: 30,
+        marginHorizontal: 20,
+        shadowColor: '#ef506b',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.15,
+        shadowRadius: 8,
+        elevation: 8,
     },
-    form:{
-        marginTop:30
+    title_check: {
+        fontSize: 32,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 8,
+        color: '#ef506b',
     },
-    ip:{
-        borderColor:'black',
-        backgroundColor:'#fff',
-        borderWidth:1,
-        borderRadius:7,
-        marginTop:30
+    subtitle: {
+        fontSize: 16,
+        color: '#666',
+        textAlign: 'center',
+        marginBottom: 30,
     },
-    btn:{
-        marginTop:20,
-        backgroundColor:'#ff8c00',
-        paddingVertical:15,
-        alignItems:'center',
-        borderRadius:10
+    ip: {
+        borderColor: '#e0e0e0',
+        backgroundColor: '#f9f9f9',
+        borderWidth: 1,
+        borderRadius: 12,
+        marginTop: 20,
+        fontSize: 16,
+        paddingLeft: 8,
     },
-    imageContainer: {
+    btn: {
+        marginTop: 30,
+        backgroundColor: '#ef506b',
+        paddingVertical: 16,
         alignItems: 'center',
-        marginTop: 10,
-        width:350,
-        height:250
+        borderRadius: 12,
+        shadowColor: '#ef506b',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 4,
     },
-    form_option_password:{
-        alignItems:'center',
-        marginTop:5,
-        
+    btnText: {
+        color: '#ffffff',
+        fontWeight: 'bold',
+        fontSize: 16,
     },
-    title_check:{
-        fontSize:30,
-        fontWeight:'bold',
-        textAlign:'center'
+    form_option_password: {
+        alignItems: 'center',
+        marginTop: 30,
+    },
+    linkText: {
+        color: '#0066ff',
+        fontSize: 15,
+        fontWeight: '500',
     }
-})
-export default Create_New_Account;
+});
+
+export default CreateNewAccount;

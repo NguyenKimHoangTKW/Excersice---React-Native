@@ -18,7 +18,7 @@ export default function Login(){
             Alert.alert("Password cannot be empty");
             return;
         }
-        const responsive = await fetch(`${BASE_URL}/api/dang-nhap`,{
+        const responsive = await fetch(`${BASE_URL}/dang-nhap`,{
             method:'POST',
             headers:{
                 "Content-Type":"application/json"
@@ -30,23 +30,22 @@ export default function Login(){
         });
         const res = await responsive.json();
         if(res.success){
-            Alert.alert("Login successfully");
+            if (res.success) {
+                navigation.navigate('Home', { username: res.data[0].username });
+              }
         }
         else{
-            Alert.alert("Incorrect email or password");
+            Alert.alert(res.message);
         }
     }
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar />
-            <Image style={styles.imageContainer}
-                source={require("../assets/images/logo-vertical.png")}
-            />
             <View style={styles.form}>
-                <Text style={styles.title_check}>Welcome!</Text>
+                <Text style={styles.title_check}>Login</Text>
                 <TextInput
                     label="Email"
-                    placeholder="Enter email"
+                    placeholder="Enter email" 
                     value={email}
                     onChangeText={setEmail}
                     style={styles.ip}
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30
     },
     form: {
-        marginTop: 30
+        marginTop: 150
     },
     ip: {
         borderColor: 'black',
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
     },
     btn: {
         marginTop: 20,
-        backgroundColor: '#ff8c00',
+        backgroundColor: '#ef506b',
         paddingVertical: 15,
         alignItems: 'center',
         borderRadius: 10
@@ -115,9 +114,9 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     title_check:{
-        fontSize:30,
+        fontSize:50,
         fontWeight:'bold',
-        textAlign:'center'
+        textAlign:'center',
+        color:'#ef506b'
     }
 });
-
