@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, SafeAreaView
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { BASE_URL } from "../apiConfig";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { LinearGradient } from 'expo-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
 
 // Bảng màu ứng dụng
 const COLORS = {

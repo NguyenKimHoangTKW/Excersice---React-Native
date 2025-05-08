@@ -31,7 +31,12 @@ export default function Login(){
         const res = await responsive.json();
         if(res.success){
             if (res.success) {
-                navigation.navigate('Home', { username: res.data[0].username });
+                if(res.data[0].id_role === 1){
+                    navigation.navigate('Home', { username: res.data[0].username });
+                }
+                else{
+                    Alert.alert("Tài khoản này không phải Admin");
+                }
               }
         }
         else{

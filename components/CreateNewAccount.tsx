@@ -29,7 +29,7 @@ const CreateNewAccount = () => {
             Alert.alert("Password re-entered incorrectly");
             return;
         }
-        const responsive = await fetch(`${BASE_URL}/api/create-account`,{
+        const responsive = await fetch(`${BASE_URL}/create-account`,{
            method:'POST',
            headers:{
             "Content-Type" :"application/json"
