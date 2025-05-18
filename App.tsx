@@ -1,29 +1,42 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ContactsNavigator from './screens/routes';
-import OptionsScreen from './screens/Options';
 import React from 'react';
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+
+import { BookDetail } from "./screens/Index";
+import Home from "./screens/Home";
+import LoginScreen from './components/LoginScreen';
 import CreateNewAccount from './components/CreateNewAccount';
 import ResetPassword from './components/ResetPassword';
-import Home from './components/Home';
-import Login from './components/LoginScreen';
-import ServiceDetail from './components/ServiceDetail';
-const Stack = createNativeStackNavigator();
 
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    border: "transparent"
+  }
+}
 
+const Stack = createStackNavigator();
 
-export default function App() {
+const App = () => {
   return (
-    <NavigationContainer >
-      <Stack.Navigator initialRouteName='Login'>
-        <Stack.Screen name="Lab2" component={ContactsNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="Options" component={OptionsScreen} />
-        <Stack.Screen name="Login" component={Login} />
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false
+        }}
+        initialRouteName={'Login'}
+      >
+        {/* Tabs */}
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Create New Account" component={CreateNewAccount} />
         <Stack.Screen name="Reset Password" component={ResetPassword} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="ServiceDetail" component={ServiceDetail} />
+        {/* Screens */}
+        <Stack.Screen name="BookDetail" component={BookDetail} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }
+
+export default App;

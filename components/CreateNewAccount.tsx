@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Alert, Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { TextInput } from "react-native-paper";
@@ -53,7 +54,6 @@ const CreateNewAccount = () => {
             <StatusBar />
             <View style={styles.formBox}>
                 <Text style={styles.title_check}>Create Account</Text>
-                <Text style={styles.subtitle}>Join us and start your journey!</Text>
                 <TextInput
                     label="Email"
                     placeholder="Enter email"
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 8,
-        color: '#ef506b',
+        color: '#1c1c27',
     },
     subtitle: {
         fontSize: 16,
@@ -143,11 +143,11 @@ const styles = StyleSheet.create({
     },
     btn: {
         marginTop: 30,
-        backgroundColor: '#ef506b',
+        backgroundColor: '#dddddd',
         paddingVertical: 16,
         alignItems: 'center',
         borderRadius: 12,
-        shadowColor: '#ef506b',
+        shadowColor: '#dddddd',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
         shadowRadius: 4,

@@ -12,7 +12,7 @@ const ResetPassword = () =>{
             Alert.alert("Email cannot be empty");
             return;
         }
-        const responsive = await fetch(`${BASE_URL}/api/edit-account`,{
+        const responsive = await fetch(`${BASE_URL}/quen-mat-khau`,{
             method:'POST',
             headers:{
                 "Content-Type":"application/json"
@@ -23,7 +23,7 @@ const ResetPassword = () =>{
         });
         const res = await responsive.json();
         if(res.success){
-            Alert.alert(`Password has been reset to: ${res.data[0].password}`)
+            Alert.alert(`Password has been reset to: ${res.data}`)
         }
         else{
             Alert.alert(res.message);
@@ -42,7 +42,7 @@ const ResetPassword = () =>{
                 style={styles.ip}
                 left={<TextInput.Icon icon="email" />}/>
                 <TouchableOpacity style={styles.btn} onPress={Reset_Password}>
-                    <Text style={{color:'#ffffff',fontWeight:'bold'}}>Signup</Text>
+                    <Text style={{color:'#ffffff',fontWeight:'bold'}}>Reset Password</Text>
                 </TouchableOpacity>
            </View>
            <View style={styles.form_option_password} >
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     },
     btn:{
         marginTop:20,
-        backgroundColor:'#ef506b',
+        backgroundColor:'#dddddd',
         paddingVertical:15,
         alignItems:'center',
         borderRadius:10
@@ -95,6 +95,8 @@ const styles = StyleSheet.create({
     title_check:{
         fontSize:30,
         fontWeight:'bold',
+        color:'#1c1c27',
+        textAlign:'center'
     }
 })
 export default ResetPassword;
